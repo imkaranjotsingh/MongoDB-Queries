@@ -1,0 +1,37 @@
+employee collection
+emp_no, name, address, city,d_name,salary
+list the name of all department
+list the name of employee who is working in java department
+list the salary of ajay kumar
+list the name of department in which ajay is working
+list the employees who is getting salary 10000-15000
+delete the name of employee who name is ajay
+list the name of employees who salary not equal to 10000
+distinct the name
+list the name of the employee who is working in chd or mohali
+update the name raj change it to akshay
+
+{emp_no:2,name:"ajay",address:"house no 56",city:"CHD",d_name:"java",salary:10000},
+{emp_no:3,name:"ajay",address:"house no 56",city:"CHD",d_name:"java",salary:10000},
+{emp_no:4,name:"ajay",address:"house no 56",city:"CHD",d_name:"java",salary:10000},
+{emp_no:5,name:"ajay",address:"house no 56",city:"CHD",d_name:"java",salary:10000},
+{emp_no:6,name:"vishal",address:"house no 89",city:"Mohali",d_name:"php",salary:12000},
+{emp_no:7,name:"Nitesh",address:"house no 90",city:"Panchkula",d_name:"mean",salary:14000},
+{emp_no:8,name:"Sandeep",address:"house no 93",city:"Mohali",d_name:"dot net",salary:15000},
+{emp_no:9,name:"gajender",address:"house no 94",city:"Zirkpur",d_name:"c++",salary:8000},
+{emp_no:10,name:"inder",address:"house no 95",city:"Mohali",d_name:"c",salary:9000},
+{emp_no:11,name:"raj",address:"house no 96",city:"ambala",d_name:"php",salary:8000},
+
+
+
+answer:-
+1)db.employee.find({},{"d_name":true,"_id":false});
+2)db.employee.find({"d_name":"java"},{"name":true,"_id":false});
+3)db.employee.find({"name":"ajay"},{"salary":true,"_id":false});
+4)db.employee.find({"name":"ajay"},{"d_name":true,"_id":false});
+5)db.employee.find({salary :{$gt:10000,$lt:15000}});
+6)db.employee.remove({name:"ajay"});
+7)db.employee.find({salary:{$ne:1000}},{name:"true"})
+8)db.employee.distinct("name");
+9)db.employee.find({$or:[{city:'chd'},{city:"Mohali"}]});
+10)db.employee.update({name:"raj"},{$set:{name:"akshay"}});

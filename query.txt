@@ -1,0 +1,24 @@
+book
+bname price author publisher  location  title
+php  100    ajay    mbd       CHD	mysql
+java 200    abc	    mbd       CHD	variables
+Dotnet 150  def     eagles    Mohali    variables	
+-----
+--------------------------
+1  list name of book  which is written by Ajay
+ans) db.book.find({"author":"ajay"},{"bname":1,_id:false});
+
+2  List  author name of  all  php book
+ans) db.book.find({"bname":"php"},{"author":1,_id:false});
+
+3  list  name of  author whose  name begins  with character A
+ans) db.book.find({"author":/^A/},{"author":1,"_id":false});
+
+4 list  price  and publisher name of  java book
+ans) db.book.find({"bname":"java"},{"price":1,"publisher":1,"_id":false});
+
+5  list   books  which was  published  in chandigarh
+ans) db.book.find({"location":"chd"},{"bname":1,"_id":false});
+
+6 list  name of  books which was   written  author who  is  living  in mohali
+ans) db.book.find({"location":"mohali"},{"bname":1,"_id":false});

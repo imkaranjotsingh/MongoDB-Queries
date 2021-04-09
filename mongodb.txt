@@ -1,0 +1,66 @@
+Advantages of MongoDB over RDBMS
+Schema less - MongoDB is a document database in which one collection holds different documents. Number of fields, content and size of the document can differ from one document to another.
+
+Structure of a single object is clear.
+
+No complex joins.
+
+Deep query-ability. MongoDB supports dynamic queries on documents using a document-based query language that's nearly as powerful as SQL.
+
+Tuning.
+
+Ease of scale-out - MongoDB is easy to scale.
+
+Conversion/mapping of application objects to database objects not needed.
+
+Uses internal memory for storing the (windowed) working set, enabling faster access of data.
+
+Why Use MongoDB?
+Document Oriented Storage - Data is stored in the form of JSON style documents.
+
+Index on any attribute
+
+Replication and high availability
+
+Auto-sharding
+
+Rich queries
+
+Fast in-place updates
+
+Professional support by MongoDB
+
+Where to Use MongoDB?
+Big Data
+Content Management and Delivery
+Mobile and Social Infrastructure
+User Data Management
+Data Hub
+
+
+
+
+
+Some considerations while designing Schema in MongoDB
+
+Design your schema according to user requirements.
+
+Combine objects into one document if you will use them together. Otherwise separate them (but make sure there should not be need of joins).
+
+Duplicate the data (but limited) because disk space is cheap as compare to compute time.
+
+Do joins while write, not on read.
+
+Optimize your schema for most frequent use cases.
+
+Do complex aggregation in the schema.
+
+Example
+Suppose a client needs a database design for his blog/website and see the differences between RDBMS and MongoDB schema design. Website has the following requirements.
+
+Every post has the unique title, description and url.
+Every post can have one or more tags.
+Every post has the name of its publisher and total number of likes.
+Every post has comments given by users along with their name, message, data-time and likes.
+On each post, there can be zero or more comments.
+In RDBMS schema, design for above requirements will have minimum three tables.
