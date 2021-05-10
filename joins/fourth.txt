@@ -1,0 +1,138 @@
+
+Nested Queries
+--------------
+employee
+---------
+empno   name   salary  deptno
+100     amit   9000    10
+101     sumit  7000    11
+102     sunil  8000    10
+
+department
+----------
+deptno dname loc
+10     acc    chd
+11     bcc    moh
+
+
+1.list the employee who are working in acc
+department
+
+select * from employee where deptno in
+  ( select deptno from department where dname='acc')
+2. list the employees who are earning more than sunil.
+
+select * from employee where salary>(select salary from employee where name='sunil')
+
+3. list the employee who are earning between 3000-4000 and working in chd
+
+select * from employee where deptno in
+  ( select deptno from department where loc='chd') and salary between 3000 and 4000
+
+4. list the employee who are working in same department in which kk is working
+
+select * from employee where deptno in(
+select deptno from employee where name='kk')
+
+5.
+
+Item
+Icode  name       price qty
+100    toothpaste  20    10
+101    abc         25    500
+----------------------
+supplier
+scode  sname   city
+20     amit    chd
+21     sunil   moh
+22     kk      pkl
+-------------------
+Item_Supplier
+icode   scode
+100     20
+101     21
+102     22
+100     21
+100     23
+
+1. list the supplier who are living in chd.
+select * from supplier where city='chd'
+2.
+  List the items having the qty > 400
+
+select * from item where qty>400
+
+3. List the supplier who are supplying the
+   toothpaste.
+
+select * from supplier where scode in(
+
+select scode from item_supplier where icode in(
+select icode from item where name='toothpaste') )
+
+4. List the items which are supplied in chd.
+
+
+select * from item where icode in(
+select icode from item_supplier where scode in
+(select scode from supplier where city='chd'))
+
+5. List the items which are supplied by sumit and having the price > qty
+
+select * from item where icode in(
+select icode from item_supplier where scode in
+(select scode from supplier where sname='sumit'))  and price>qty
+
+6. List the items which are supplied in the
+same city as the city of sumit.
+
+select * from item where icode in(
+select icode from item_supplier where scode in(
+select scode from supplier where city in(
+select city from supplier where sname='kk')))
+
+7. List the items which have > 2 supplier
+select * from item where icode in(
+select icode from item_suppier group by icode having count(*)>2
+ )
+
+8. List the items which have highest price.
+
+select * from item where price in(
+select max(price) from item)
+9. List the items which have price > average price of all items.
+
+select * from item where price > (
+select avg(price) from item)
+
+-------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
